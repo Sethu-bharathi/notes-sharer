@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import { useNavigate } from "react-router-dom";
 import department from "../../Assets/Departments";
 import AuthWrapper from "../../Components/AuthWrapper";
@@ -34,7 +34,7 @@ function Signupworker() {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          localStorage.setItem("userData", JSON.stringify(data.data));
         });
     } else {
       fetch("http://127.0.0.1:5000/signup-teacher", {
@@ -51,7 +51,8 @@ function Signupworker() {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          localStorage.setItem("userData", JSON.stringify(data.data));
+          navigate("/search-note")
         });
     }
   };
