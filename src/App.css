@@ -1,0 +1,19 @@
+:root{
+  --grad1:#191E3C;
+  --grad2:#242951;
+  --grad3:#191E3C;
+  --secondary:#F65143;
+  --teritiary:#FEC538;
+  --grey:#42486A;
+  --font-grey:#746A99;
+  --font-white:#D8D7D6;
+  --white:#FDFCFD;
+}
+
+body{
+  overflow-x: hidden;
+  color: var(--font-white);
+}
+
+
+

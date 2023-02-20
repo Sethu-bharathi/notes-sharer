@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap");
+
+button,input{
+  font-family: "Comfortaa";
+}
+.Loginworkerdiv > input {
+  width: 300px;
+  border: none;
+  background-color: transparent;
+  border-bottom: white solid 2px;
+  color: white;
+  height: 30px;
+  font-size: 18px;
+  font-family: "Comfortaa";
+}
+.Loginworkerdiv > input:focus {
+  outline: none;
+}
+.signup {
+  align-self: center;
+  margin-bottom: 50px;
+}
+.Loginworkerdiv {
+  margin: auto;
+  height: 100vh;
+  width: 320px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: center;
+}
+.Loginworkerdiv > p {
+  text-align: start;
+  margin: 30px 0 10px 0;
+}
+.buttn {
+  position: relative;
+  left: 30px;
+  margin-top: 40px;
+  width: 150px;
+  border-radius: 7px;
+  height: 45px;
+  background-color: var(--secondary);
+  border: none;
+  outline: none;
+  color: white;
+  font-weight: bold;
+}
+.buttn:hover{
+    cursor: pointer;
+}
+@media (max-width:481px) {
+  .signup {
+    align-self: center;
+    margin-bottom: 30px;
+  }
+  .Loginworkerdiv > p {
+    text-align: start;
+    margin: 20px 0 5px 0;
+  }
+  .Loginworkerdiv > input{
+    width:280px;
+  }
+  .Loginworkerdiv {
+    width: 280px;
+  }
+}
