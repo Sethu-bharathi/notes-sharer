@@ -3,17 +3,20 @@ html {
 }
 
 .white {
+  padding-top: 8%;
   min-height: 100vh;
   min-width: 100vw;
-  background-color: #e4e9f0;
-  padding-top: 3rem;
-  color: black;
+  background-color: var(--grad1);
+  color: white !important;
   padding-left: 10%;
   display: flex;
   gap: 20px;
   flex-direction: column;
   overflow: scroll;
   align-content: flex-start;
+}
+.ce-header{
+  color: white;
 }
 
 .editor-div {
@@ -23,7 +26,7 @@ html {
   width: 90%;
   min-height: 80vh;
   border-radius: 5px;
-  background-color: rgba(0, 0, 0, 0.096);
+  background-color: #353b65;
 }
 .btn ,.btn-submit{
   height: 50px;
@@ -46,6 +49,7 @@ html {
   display: inline-block;
   font-size: 2rem;
   margin-bottom: 30px;
+  color: #fff;
 }
 .flex-row {
   display: flex;

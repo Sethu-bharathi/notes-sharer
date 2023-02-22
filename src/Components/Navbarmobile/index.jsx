@@ -48,7 +48,7 @@ function Navmobile() {
         }
     };
   function changeShadow(current, next) {
-    if (current == "/") {
+    if (current === "/") {
       homelinkref.current.classList.remove("selected-fill");
     } else if (current === "/about") {
       aboutlinkref.current.classList.remove("selected-fill");
@@ -61,7 +61,7 @@ function Navmobile() {
     } else if (current.includes("/blogs")) {
       bloglinkref.current.classList.remove("selected-fill");
     }
-    if (next == "/") {
+    if (next === "/") {
       homelinkref.current.classList.add("selected-fill");
     } else if (next === "/about") {
       aboutlinkref.current.classList.add("selected-fill");
@@ -89,7 +89,7 @@ function Navmobile() {
     <div className="mobile-nav">
       <div className="mob-nav">
         <div className="mob-nav-left">
-          <img src={logo} />
+          <img src={logo} alt="Figure of our Logo"/>
         </div>
         <div className="mob-nav-right" onClick={toggleSidebar}>
           {sidebarisopen ? (
@@ -101,7 +101,7 @@ function Navmobile() {
       </div>
       <div className="sidebar" ref={sidebaref}>
         <div className="logo-mob">
-          <img src={logo} />
+          <img src={logo} alt="Figure of out Logo"/>
         </div>
         <div>
           <div className="mob-nav-links">
@@ -118,22 +118,22 @@ function Navmobile() {
             <div
               className="mob-nav-link"
               ref={bloglinkref}
-              onClick={() => fn("/blogs")}
+              onClick={() => fn("/serach-note")}
             >
               <div>
                 <RiPencilLine size={20} color="#AFB1B8" />
               </div>
-              <div>Blogs</div>
+              <div>Notes</div>
             </div>
             <div
               className="mob-nav-link"
               ref={aboutlinkref}
-              onClick={() => fn("/about")}
+              onClick={() => fn("/upload-note")}
             >
               <div>
-                <BsPerson size={20} color="#AFB1B8" />
+                <BsFileEarmarkCode size={20} color="#AFB1B8" />
               </div>
-              <div>About</div>
+              <div>Upload</div>
             </div>
             <div
               className="mob-nav-link"
@@ -141,29 +141,19 @@ function Navmobile() {
               onClick={() => fn("/projects")}
             >
               <div>
-                <BsFileEarmarkCode size={20} color="#AFB1B8" />
+                <BsPerson size={20} color="#AFB1B8" />
               </div>
-              <div>Projects</div>
+              <div>Profile</div>
             </div>
             <div
               className="mob-nav-link"
               ref={resumelinkref}
-              onClick={() => fn("/resume")}
+              onClick={() => fn("/login")}
             >
               <div>
                 <BiClipboard size={20} color="#AFB1B8" />
               </div>
-              <div>Resume</div>
-            </div>
-            <div
-              className="mob-nav-link"
-              ref={contactlinkref}
-              onClick={() => fn("/contact")}
-            >
-              <div>
-                <TbMessageCircle size={20} color="#AFB1B8" />
-              </div>
-              <div>Contact</div>
+              <div>Login</div>
             </div>
           </div>
         </div>

@@ -21,7 +21,6 @@
 .view-port {
     font-size: 15px;
     font-family: 'Poppins', sans-serif;
-    background-color: var(--veryLightGray);
 }
 
 .attribution { 
@@ -31,15 +30,6 @@
     color: hsl(228, 45%, 44%); 
 }
 
-h1:first-of-type {
-    font-weight: var(--weight1);
-    color: var(--varyDarkBlue);
-
-}
-
-h1:last-of-type {
-    color: var(--varyDarkBlue);
-}
 
 @media (max-width: 400px) {
     h1 {
@@ -67,7 +57,7 @@ h1:last-of-type {
 
 .box {
     border-radius: 5px;
-    box-shadow: 0px 30px 40px -20px var(--grayishBlue);
+    box-shadow: 0px 0px 30px -20px var(--grayishBlue);
     padding: 30px;
     margin: 20px;  
 }

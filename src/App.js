@@ -29,6 +29,7 @@ function App() {
           <Route path="/Notes" element={<NoteSearch />} />
           <Route path="/Chat" element={<ChatScreen />}/>
           <Route path="/upload-note" element={<UploadNote />} />
+          <Route path="/search-note" element={<NoteSearch />}/>
          </Routes>
         <ToastContainer />
       </Router>

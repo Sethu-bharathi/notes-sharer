@@ -1,6 +1,6 @@
 .form-container {
   position: absolute;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -40%);
   top: 50%;
   left: 50%;
 }
@@ -198,6 +198,9 @@ button:focus {
     border:none;
 }
 @media (max-width: 969px) {
+  .form-container{
+    transform: translate(-50%, -50%);
+  }
   .form-container > form>div {
     gap: 0px;
   }

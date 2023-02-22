@@ -8,7 +8,6 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
 }
 .mobile-nav{
     position: relative;
@@ -24,8 +23,9 @@
 }
 .sidebar{
     min-height: 100vh;
-    width: 200px;
-    background-color: black;
+    width: min(250px,100vw);
+    background-color: var(--grad2);
+    box-shadow: 0 0 20px #000;
     position: fixed;
     top: 0px;
     left: 0px;
@@ -57,17 +57,15 @@
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
-    /* background-color: var(--fg-green); */
     transition: 0.3s;
-
-    gap: 10px;
+    justify-content: center;
+    gap: 15px;
     display: inline-flex;
     align-items: center;
-
 }
 .mob-nav-right{
     margin-right: 10px;
 }
 .selected-fill{
-    background-color:#313334;
+    background-color:var(--grad1);
 }

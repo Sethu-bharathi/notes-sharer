@@ -1,19 +1,15 @@
-import "./Notesearch.css"
+import "./Notesearch.css";
 
 export default function NoteSearch() {
+  const images=["icon-calculator.svg","icon-supervisor.svg","icon-karma.svg","icon-team-builder.svg"];
+  const data={
+    courseName:"Operating system",
+    topicsIncluded:"semaphore,Deadlock",
+  }
   return (
-    <div>
-      <Card />
-    </div>
-  );
-}
-
-const Card = () => 
-  <>
     <div className="view-port">
       <div className="header">
-        <h1>Reliable, efficient delivery</h1>
-        <h1>Powered by Technology</h1>
+        <h1>Search Through all notes</h1>
 
         <p>
           Our Artificial Intelligence powered tools use millions of project data
@@ -21,15 +17,7 @@ const Card = () =>
         </p>
       </div>
       <div className="row1-container">
-        <div className="box box-down cyan">
-          <h2>Supervisor</h2>
-          <p>Monitors activity to identify project roadblocks</p>
-          <img
-            src="https://assets.codepen.io/2301174/icon-supervisor.svg"
-            alt=""
-          />
-        </div>
-
+        <Card data={data} image={images[Math.floor(Math.random()*4-.1)]}/>
         <div className="box red">
           <h2>Team Builder</h2>
           <p>
@@ -59,15 +47,17 @@ const Card = () =>
           <img src="https://assets.codepen.io/2301174/icon-karma.svg" alt="" />
         </div>
       </div>
-      <footer>
-        <p className="attribution">
-          Challenge by{" "}
-          <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
-            Frontend Mentor
-          </a>
-          . Coded by <a href="#">Jared Parsons</a>.
-        </p>
-      </footer>
+      <footer></footer>
     </div>
-  </>;
+  );
+}
 
+const Card = (props) => (
+  <>
+    <div className="box box-down cyan">
+      <h2>{props.data.courseName}</h2>
+      <p>{props.data.topicsIncluded}</p>
+      <img src={`https://assets.codepen.io/2301174/${props.image}`} alt="" />
+    </div>
+  </>
+);
