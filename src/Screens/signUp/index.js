@@ -51,6 +51,7 @@ function Signupworker() {
       })
         .then((res) => res.json())
         .then((data) => {
+          localStorage.setItem("userData",{...data.data,isStudent})
           console.log(data);
         });
     }

@@ -8,25 +8,41 @@ function Loginworker() {
   const [password, setpassword] = useState("");
   const navigate=useNavigate();
   const login = () => {
-    console.log(email);
-    // fetch("http://localhost:2000/worker/signin", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     email,
-    //     password,
-    //   }),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     localStorage.setItem('workerdata',JSON.stringify({
-    //       ...data.user
-    //     }));
-    //   }).catch((err)=>alert('Something went wrong'));
+    if (isStudent) {
+      fetch("http://127.0.0.1:5000/signup-student", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          studentEmail: email,
+          studentPassword: password,
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+        });
+    } else {
+      fetch("http://127.0.0.1:5000/signup-teacher", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          teacherEmail: email,
+          teacherPassword: password
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          localStorage.setItem("userData",{...data.data,isStudent})
+          console.log(data);
+        });
+    }
   };
+
+  
 
   return (
     <AuthWrapper>

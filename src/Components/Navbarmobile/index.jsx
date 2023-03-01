@@ -118,7 +118,7 @@ function Navmobile() {
             <div
               className="mob-nav-link"
               ref={bloglinkref}
-              onClick={() => fn("/serach-note")}
+              onClick={() => fn("/search-note")}
             >
               <div>
                 <RiPencilLine size={20} color="#AFB1B8" />
