@@ -31,11 +31,10 @@ html {
 .btn ,.btn-submit{
   height: 50px;
   width: 150px;
-  box-shadow: 5px 5px 10px #929191c6 !important;
   position: fixed;
   bottom: 30px;
   right: 5%;
-  background-color: #2662d1b1;
+  background-color: var(--secondary);
   outline: none;
   border: none;
   border-radius: 8px;
@@ -142,11 +141,16 @@ form >h3{
     justify-content: center;
     align-items: center;
 }
+.prompt form:hover{
+  margin: 0;
+}
 .email-holder > input,.prompt>form>input {
     width: 300px;
     border: none;
-    background-color: transparent;
+    color: black !important;
+    background-color: transparent !important;
     border-bottom: black solid 2px;
+    border-radius: 0;
     color: black;
     height: 30px;
     font-size: 18px;

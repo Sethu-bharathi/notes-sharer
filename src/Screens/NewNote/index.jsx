@@ -7,7 +7,7 @@ import Folder from "../../Assets/folder.png";
 
 const Editor = (props) => {
   const [editor, seteditor] = useState({});
-  const [pin, setpin] = useState();
+  const [fileName, setFileName] = useState("");
   const prompt = useRef();
   useEffect(() => {
     const editor = new EditorJS(Configuration());
@@ -31,27 +31,14 @@ const Editor = (props) => {
       });
   }, []);
 
-  const handleFormChange = (index, event) => {
-    console.log(index, event.target.name, event.target.value);
-    let data = [...inputFields];
-    data[index][event.target.name] = event.target.value;
-    setInputFields(data);
-  };
-  const removeFields = (index) => {
-    let data = [...inputFields];
-    data.splice(index, 1);
-    setInputFields(data);
-  };
+ 
   const hide=()=>{
     prompt.current.style = "z-index:-100;display:none";
   }
   const show=()=>{
     prompt.current.style = "z-index:100;display:flex";
   }
-  const addFields = () => {
-    let newfield = { email: "" };
-    setInputFields([...inputFields, newfield]);
-  };
+ 
   const onSave = () => {
     editor
       .save()
@@ -82,36 +69,8 @@ const Editor = (props) => {
         <div className="prompt">
           <span onClick={hide}>+</span>
           <form>
-            <h3>Enter the pin for your Notes</h3>
-            <input
-              type="password"
-              name="pin"
-              placeholder="Pin"
-              value={pin}
-              onChange={(e) => {
-                setpin(e.target.value);
-              }}
-            />
-            <h3>List of emails you want to give access to </h3>
-            {inputFields.map((input, index) => {
-              return (
-                <div key={index} className="email-holder">
-                  <input
-                    type="email"
-                    name="email"
-                    onChange={(event) => handleFormChange(index, event)}
-                    placeholder="Email"
-                    value={input.email}
-                  />
-                  <span className="minus" onClick={() => removeFields(index)}>
-                    +
-                  </span>
-                </div>
-              );
-            })}
-            <span className="plus" onClick={addFields}>
-              +
-            </span>
+            <h3> File name</h3>
+            <input type="text" value={fileName} onChange={e=>setFileName(e.target.value)}/>
           </form>
           <button className="btn-submit" onClick={onSave}>
             Save

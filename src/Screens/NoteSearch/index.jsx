@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import "./Notesearch.css";
 
 export default function NoteSearch() {
@@ -8,6 +9,8 @@ export default function NoteSearch() {
       .then((data) => {
         console.log(data.notes);
         setNoteData(data.notes);
+      }).catch(e=>{
+        toast(e);
       });
   }, []);
   const [noteData, setNoteData] = useState([]);
@@ -26,14 +29,9 @@ export default function NoteSearch() {
     <div className="view-port">
       <div className="header">
         <h1>Search Through all notes</h1>
-        
-        <p>
-          Our Artificial Intelligence powered tools use millions of project data
-          points to ensure that your project is successful
-        </p>
       </div>
       <div className="row1-container">
-      {noteData.length > 0 &&
+      {noteData.length > 0 ?
           noteData.map((note) => (
             <Card
             key={note.fileId}
@@ -43,7 +41,9 @@ export default function NoteSearch() {
               image={images[Math.floor(Math.random() * 4 - 0.1)]}
               className={colors[Math.floor(Math.random() * 4 - 0.1)]}
             />
-          ))}
+          )):
+          <h3 style={{textAlign:"center"}}>Notes Not available</h3>}
+
       </div>
     </div>
   );

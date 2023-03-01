@@ -3,7 +3,6 @@
     width: min(500px,90%);
     background-color: white;
 }
-
 :root {
     --red: hsl(0, 78%, 62%);
     --cyan: hsl(180, 62%, 55%);
@@ -66,9 +65,9 @@ img {
 }
 
 @media (max-width: 450px) {
-    /* .box {
+    .box {
         height: 200px;
-    } */
+    }
 }
 
 @media (max-width: 950px) and (min-width: 450px) {

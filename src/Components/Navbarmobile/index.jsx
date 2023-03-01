@@ -90,6 +90,7 @@ function Navmobile() {
       <div className="mob-nav">
         <div className="mob-nav-left">
           <img src={logo} alt="Figure of our Logo"/>
+          
         </div>
         <div className="mob-nav-right" onClick={toggleSidebar}>
           {sidebarisopen ? (
@@ -102,6 +103,7 @@ function Navmobile() {
       <div className="sidebar" ref={sidebaref}>
         <div className="logo-mob">
           <img src={logo} alt="Figure of out Logo"/>
+          <h3>Notely</h3>
         </div>
         <div>
           <div className="mob-nav-links">

@@ -1,10 +1,10 @@
 import React from "react";
-import "./main.css";
+import "./hero.css";
 // import img from "../Assets/Notes.png"
 import img from "../Assets/note-hero.jpg";
 import smallNote from "../Assets/note.png";
 
-export default function Main(params) {
+export default function Hero(params) {
   return (
     <section className="root">
       <div className="container">

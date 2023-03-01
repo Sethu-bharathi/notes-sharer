@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import department from "../../Assets/Departments";
 import AuthWrapper from "../../Components/AuthWrapper";
@@ -34,7 +34,7 @@ function Signupworker() {
       })
         .then((res) => res.json())
         .then((data) => {
-          localStorage.setItem("userData", JSON.stringify(data.data));
+          console.log(data);
         });
     } else {
       fetch("http://127.0.0.1:5000/signup-teacher", {
@@ -57,7 +57,8 @@ function Signupworker() {
   };
 
   return (
-    <AuthWrapper>
+    <div className="signupPadding">
+      <AuthWrapper>
       <h2 style={{ margin: "0 0 20px 10px" }}>Find New Notes</h2>
       <h3 style={{ margin: "0 0 40px 0" }}>Write some notes</h3>
       <input
@@ -128,6 +129,7 @@ function Signupworker() {
         Already have an account?
       </div>
     </AuthWrapper>
+    </div>
   );
 }
 

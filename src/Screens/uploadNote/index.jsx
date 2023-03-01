@@ -1,6 +1,13 @@
+
 import { useState } from "react";
 import "./uploadNote.css";
-
+const temp = {
+  subjectName: "",
+  materialType: "",
+  description: "",
+  topicsIncluded: "",
+  uId: "HSLKu9AN3XWczoVFIql7FnLYAPy2",
+};
 
 export default function UploadNote() {
   const [subjectName, setsubjectName] = useState("");
@@ -8,34 +15,10 @@ export default function UploadNote() {
   const [materialType, setmaterialType] = useState("");
   const [topicsIncluded, settopicsIncluded] = useState("");
   const [description, setdescription] = useState("");
-  const [selectedFile, setselectedFile] = useState("");
 
   function uploadNote(event) {
     event.preventDefault();
-    const formData = new FormData();
-    const bodyJson = {
-      subjectCode,
-      subjectName,
-      materialType,
-      description,
-      topicsIncluded,
-      uId: "ibLN6Kmkgzfe2ywB5Bz4yZWjQ0y2",
-      userType: "student",
-    };
-    console.log(bodyJson);
-    formData.append("file", selectedFile);
-    formData.append("data", JSON.stringify(bodyJson));
-    fetch("http://localhost:5000/upload-note", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log("Success:", result);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    console.log(subjectName,subjectCode);
   }
   return (
     <div className="form-container">
@@ -59,14 +42,14 @@ export default function UploadNote() {
               placeholder="Subject Name"
             />
             <select
-              value={materialType}
-              onChange={(e) => setmaterialType(e.target.value)}
-            >
-              <option>Note</option>
-              <option>Question papers</option>
-              <option>practice problems</option>
-              <option>E-book</option>
-            </select>
+        value={materialType}
+        onChange={(e) => setmaterialType(e.target.value)}
+      >
+          <option>Note</option>
+          <option>Question papers</option>
+          <option>practice problems</option>
+          <option>E-book</option>
+      </select>
           </div>
           <div>
             <input
@@ -77,27 +60,17 @@ export default function UploadNote() {
                 setdescription(e.target.value);
               }}
             />
-            <input
-              type="text"
+            <input type="text"
               placeholder="Topics included"
               value={topicsIncluded}
               onChange={(e) => {
                 settopicsIncluded(e.target.value);
-              }}
-            />
-            <input
-              type="file"
-              id="file"
-              onChange={(e) => {
-                setselectedFile(e.target.files[0]);
-              }}
-            />
+              }}/>
+            <input type="file" id="file" />
             <label htmlFor="file">choose a file</label>
           </div>
         </div>
-        <button onClick={uploadNote} className="submit-btn">
-          Submit
-        </button>
+        <button onClick ={uploadNote} className="submit-btn">Submit</button>
       </form>
 
       <div className="drops">

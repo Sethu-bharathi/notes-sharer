@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
-import Main from "./main";
+import Hero from "./Hero";
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import Loginworker from "./Screens/Loginworker";
@@ -22,7 +22,7 @@ function App() {
           {/* <Route path="/about">
             <About />
           </Route> */}
-          <Route path="/" element={<Main />} />
+          <Route path="/" element={<Hero />} />
           <Route path="/login" element={<Loginworker />} />
           <Route path="/signup" element={<Signupworker />} />
           <Route path="/new-note" element={<NewNote />} />

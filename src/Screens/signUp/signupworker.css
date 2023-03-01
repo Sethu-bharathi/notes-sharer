@@ -47,6 +47,18 @@ button,input{
   color: white;
   font-weight: bold;
 }
+.signupPadding{
+  padding-top: 30px;
+}
+@media (max-width:969px) {
+  html{
+    font-size: 10px;
+  }
+  .signupPadding{
+    padding-top: 0px;
+  }
+  
+}
 .buttn:hover{
     cursor: pointer;
 }
