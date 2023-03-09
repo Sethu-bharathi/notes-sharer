@@ -14,6 +14,11 @@ body{
   overflow-x: hidden;
   color: var(--font-white);
 }
+button{
+  outline: none;
+  background: transparent;
+  border: none;
+}
 
 
 

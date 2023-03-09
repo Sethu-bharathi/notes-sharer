@@ -12,6 +12,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ChatScreen from "./Screens/ChatScreen";
 import UploadNote from "./Screens/uploadNote";
+import AcceptNote from "./Screens/AcceptNote";
+import RejectNote from "./Screens/RejectNote";
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
           <Route path="/Chat" element={<ChatScreen />}/>
           <Route path="/upload-note" element={<UploadNote />} />
           <Route path="/search-note" element={<NoteSearch />}/>
+          <Route path="/note-accept" element={<AcceptNote />} />
+          <Route path="/note-reject" element={<RejectNote />} />
          </Routes>
         <ToastContainer />
       </Router>

@@ -8,7 +8,7 @@
     --cyan: hsl(180, 62%, 55%);
     --orange: hsl(34, 97%, 64%);
     --blue: hsl(212, 86%, 64%);
-    --varyDarkBlue: hsl(234, 12%, 34%);
+    --varyDarkBlue: hsl(234, 11%, 50%);
     --grayishBlue: hsl(229, 6%, 66%);
     --veryLightGray: hsl(0, 0%, 98%);
     --weight1: 200;
@@ -28,7 +28,10 @@
     color: hsl(228, 45%, 44%); 
 }
 
-
+.icon-btn{
+    padding: 7px 2px 7px 7px;
+    height: fit-content;
+}
 @media (max-width: 400px) {
     h1 {
         font-size: 1.5rem;
@@ -48,12 +51,16 @@
     color: var(--grayishBlue);
 }
 
-
+.box ul{
+    padding: 0;
+}
 .box p {
     color: var(--grayishBlue);
 }
 
 .box {
+    width: max(400px,30%);
+    height: auto;
     border-radius: 5px;
     box-shadow: 0px 0px 30px -20px var(--grayishBlue);
     padding: 30px;
@@ -63,19 +70,12 @@
 img {
     float: right;
 }
-
-@media (max-width: 450px) {
-    .box {
-        height: 200px;
-    }
+.li-item{
+    display: block;
+    text-align: left;
+    margin-top: 8px;
 }
 
-@media (max-width: 950px) and (min-width: 450px) {
-    .box {
-        text-align: center;
-        height: 180px;
-    }
-}
 
 .cyan {
     border-top: 3px solid var(--cyan);
@@ -94,27 +94,36 @@ h2 {
     color: var(--varyDarkBlue);
     font-weight: var(--weight3);
 }
-
-
+.icon-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.icon-container div{
+    display: flex;
+    align-items: center;
+    gap:10px;
+}
+.icon-container >div>p{
+    margin: 0;
+}
+.pointer{
+    cursor: pointer;
+}
+.row1-container {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
 @media (min-width: 950px) {
-    .row1-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+    
     
     .row2-container {
         display: flex;
         justify-content: center;
         align-items: center;
-    }
-    .box-down {
-        position: relative;
-        top: 150px;
-    }
-    .box {
-        width: 20%;
-     
     }
     .header p {
         width: 30%;
