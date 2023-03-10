@@ -33,7 +33,7 @@ export default function UploadNote() {
       subjectName,
       materialType,
       description,
-      topicsIncluded,
+      topicsIncluded:topicsIncluded.split(","),
       uId: userData.data[key].localId,
       userType: key,
     };
