@@ -24,8 +24,9 @@ import {
 import { updateUsers } from "./features/Users/UsersSlice";
 import FrequntlyAskedQuestions from "./Screens/FrequentlyAsked";
 import Layout from "./Components/Layout";
-import { checkAuth } from "./utils/protected";
+import { checkAdmin, checkAuth } from "./utils/protected";
 import Error from "./Screens/Error";
+import Admin from "./Screens/Admin";
 
 function App() {
   const dispatch = useDispatch();
@@ -129,6 +130,7 @@ function App() {
         },
         { path: "/login", element: <Loginworker /> },
         { path: "/signup", element: <Signupworker /> },
+        { path: "/admin", element: <Admin />, loader: checkAdmin },
       ],
     },
   ]);

@@ -8,5 +8,14 @@ export function checkAuth() {
   }
   return 0;
 }
+export function checkAdmin() {
+  const userData = JSON.parse(localStorage.getItem("userData")) ?? undefined;
+    console.log(userData?.data?.isAdmin);
+  if (!userData || userData?.data?.isAdmin) {
+    alert("You dont't have admin access 🚫 ");
+    return redirect("/login");
+  }
+  return 0;
+}
 
 export function getAuth() {}

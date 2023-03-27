@@ -154,7 +154,6 @@ form >h3{
     color: black;
     height: 30px;
     font-size: 18px;
-    font-family: "Comfortaa";
   }
   .email-holder > input:focus,.prompt>form>input:focus {
     outline: none;
