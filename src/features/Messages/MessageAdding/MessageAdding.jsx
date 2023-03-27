@@ -18,6 +18,7 @@ import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import 'emoji-mart/css/emoji-mart.css'
 import { Picker } from 'emoji-mart'
 import { GroupsSelector } from '../../Groups/GroupsSlice';
+import { red } from '@material-ui/core/colors';
 
 export default function MessageAdding(props) {
 
@@ -136,20 +137,17 @@ const [anchorEl, setAnchorEl] = React.useState(null);
     
                     { props.isGroup ?
                         
-                        <label title="Send A File" htmlFor="fileMessage">
+                        <label title="Send A File" style={{color:red}} htmlFor="fileMessage">
                             <InsertDriveFileIcon />
                         </label>
                         
                         :
-                        <div style={{padding: "12px"}} className="messagingDisabled">
+                        <div className="messagingDisabled">
                             <div>
                                 <InsertDriveFileIcon /> 
                             </div>
                         </div>
                     }
-{/* For file  */}
-
-{/* For Image  */}
                     <input
                         accept="image/*"
                         id="photoMessage"
@@ -167,7 +165,7 @@ const [anchorEl, setAnchorEl] = React.useState(null);
                         </label>
                         
                         :
-                        <div style={{padding: "12px"}} className="messagingDisabled">
+                        <div className="messagingDisabled">
                             <div>
                                 <PhotoIcon /> 
                             </div>
@@ -184,7 +182,7 @@ const [anchorEl, setAnchorEl] = React.useState(null);
                         </div>
                         
                         :
-                        <div style={{padding: "12px"}} className="messagingDisabled">
+                        <div  className="messagingDisabled">
                             <div>
                                 <EmojiEmotionsIcon /> 
                             </div>

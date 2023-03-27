@@ -7,10 +7,13 @@ import Checkbox from "@mui/material/Checkbox";
 import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined";
 import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import {useDispatch} from "react-redux";
+import { authSliceActions } from "../../store/auth-slice";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 function Signupworker() {
+  const dispatch=useDispatch();
   const [name, setname] = useState("");
   const [password, setpassword] = useState("");
   const [departmentChosen, setdepartmentChosen] = useState("Department");
@@ -48,6 +51,7 @@ function Signupworker() {
         })
         .then((data) => {
           localStorage.setItem("userData", JSON.stringify(data));
+          dispatch(authSliceActions.checkAgain())
           navigate("/");
         })
         .catch((e) => {
@@ -76,6 +80,7 @@ function Signupworker() {
         })
         .then((data) => {
           localStorage.setItem("userData", JSON.stringify(data));
+          dispatch(authSliceActions.checkAgain())
           navigate("/");
         });
     }

@@ -7,10 +7,13 @@ import AssignmentIndOutlinedIcon from "@mui/icons-material/AssignmentIndOutlined
 import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { authSliceActions } from "../../store/auth-slice";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
 function Loginworker() {
+  const dispatch = useDispatch();
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [isStudent, setisStudent] = useState(false);
@@ -40,6 +43,7 @@ function Loginworker() {
         }),
       })
         .then((res) => {
+          console.log(res.ok);
           if (!res.ok) {
             throw Error(res.statusText);
           } else {
@@ -48,6 +52,7 @@ function Loginworker() {
         })
         .then((data) => {
           localStorage.setItem("userData", JSON.stringify(data));
+          // dispatch(authSliceActions.checkAgain());
           navigate("/");
         })
         .catch((e) => {
@@ -73,6 +78,7 @@ function Loginworker() {
         })
         .then((data) => {
           localStorage.setItem("userData", JSON.stringify(data));
+          dispatch(authSliceActions.checkAgain());
           navigate("/");
         })
         .catch((e) => {

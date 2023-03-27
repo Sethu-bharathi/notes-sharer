@@ -38,7 +38,7 @@ export default function Chat(props) {
   const [curGroup, setCurGroup] = useState({});
 
   useEffect(() => {
-    console.log(groups);
+    console.log(groups)
     if (groups.length !== 0) {
       setCurGroup(groups.find((group) => group.id === props.groupId));
     }
@@ -47,7 +47,7 @@ export default function Chat(props) {
   return (
     <>
       <div className="Chat">
-        {props.isGroup ? (
+        {props.isGroup ? ( curGroup &&
           <>
             <div className="chat">
               <Welcome

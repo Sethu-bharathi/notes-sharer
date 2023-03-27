@@ -1,80 +1,28 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import "./Navbarmobile.css";
 import logo from "../../Assets/note-taking.png";
 import { BiMenu } from "react-icons/bi";
-import { TbBrandGithub, TbSmartHome } from "react-icons/tb";
-import { ImBlogger } from "react-icons/im";
-import {
-  BsPerson,
-  BsFileEarmarkCode,
-  BsMedium,
-  BsInstagram,
-} from "react-icons/bs";
+import { TbSmartHome } from "react-icons/tb";
+import { BsPerson, BsFileEarmarkCode } from "react-icons/bs";
 import { BiClipboard } from "react-icons/bi";
-import { GrProjects } from "react-icons/gr";
-import { TbMessageCircle } from "react-icons/tb";
 import { RiPencilLine } from "react-icons/ri";
-import { useLocation, useNavigate } from "react-router-dom";
-import { GiEvilFork } from "react-icons/gi";
-import { ImCross } from "react-icons/im";
+import { useNavigate } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
-import { FaLinkedin } from "react-icons/fa";
 
 function Navmobile() {
-
   const sidebaref = useRef(null);
-  const location = useLocation();
   const navigate = useNavigate();
-  const homelinkref = useRef(null);
-  const aboutlinkref = useRef(null);
-  const projectlinkref = useRef(null);
-  const contactlinkref = useRef(null);
-  const bloglinkref = useRef(null);
-  const resumelinkref = useRef(null);
-  const [sidebarisopen, setsidebarisopen] = useState(false);
-  const [prevPath, setprevPath] = useState("/");
 
-    useEffect(() => {
-        changeShadow(prevPath,location.pathname)
-        setprevPath(location.pathname)
-    }, [location.pathname]);
-    const toggleSidebar = () => {
-        setsidebarisopen(!sidebarisopen)
-        if (sidebarisopen) {
-            sidebaref.current.style.transform = "translateX(-260px)"
-        }
-        else {
-            sidebaref.current.style.transform = "translateX(0px)"
-        }
-    };
-  function changeShadow(current, next) {
-    if (current === "/") {
-      homelinkref.current.classList.remove("selected-fill");
-    } else if (current === "/about") {
-      aboutlinkref.current.classList.remove("selected-fill");
-    } else if (current === "/projects") {
-      projectlinkref.current.classList.remove("selected-fill");
-    } else if (current === "/contact") {
-      contactlinkref.current.classList.remove("selected-fill");
-    } else if (current === "/resume") {
-      resumelinkref.current.classList.remove("selected-fill");
-    } else if (current.includes("/blogs")) {
-      bloglinkref.current.classList.remove("selected-fill");
+  const [sidebarisopen, setsidebarisopen] = useState(false);
+
+  const toggleSidebar = () => {
+    setsidebarisopen(!sidebarisopen);
+    if (sidebarisopen) {
+      sidebaref.current.style.transform = "translateX(-260px)";
+    } else {
+      sidebaref.current.style.transform = "translateX(0px)";
     }
-    if (next === "/") {
-      homelinkref.current.classList.add("selected-fill");
-    } else if (next === "/about") {
-      aboutlinkref.current.classList.add("selected-fill");
-    } else if (next === "/projects") {
-      projectlinkref.current.classList.add("selected-fill");
-    } else if (next === "/contact") {
-      contactlinkref.current.classList.add("selected-fill");
-    } else if (next === "/resume") {
-      resumelinkref.current.classList.add("selected-fill");
-    } else if (next.includes("/blogs")) {
-      bloglinkref.current.classList.add("selected-fill");
-    }
-  }
+  };
 
   const fn = (name) => {
     setsidebarisopen(!sidebarisopen);
@@ -89,8 +37,7 @@ function Navmobile() {
     <div className="mobile-nav">
       <div className="mob-nav">
         <div className="mob-nav-left">
-          <img src={logo} alt="Figure of our Logo"/>
-          
+          <img src={logo} alt="Figure of our Logo" />
         </div>
         <div className="mob-nav-right" onClick={toggleSidebar}>
           {sidebarisopen ? (
@@ -102,56 +49,42 @@ function Navmobile() {
       </div>
       <div className="sidebar" ref={sidebaref}>
         <div className="logo-mob">
-          <img src={logo} alt="Figure of out Logo"/>
+          <img src={logo} alt="Figure of out Logo" />
           <h3>Notely</h3>
         </div>
         <div>
           <div className="mob-nav-links">
-            <div
-              className="mob-nav-link"
-              ref={homelinkref}
-              onClick={() => fn("/")}
-            >
+            <div className="mob-nav-link" onClick={() => fn("/")}>
               <div>
                 <TbSmartHome size={20} color="#AFB1B8" />
               </div>
               <div>Home</div>
             </div>
-            <div
-              className="mob-nav-link"
-              ref={bloglinkref}
-              onClick={() => fn("/search-note")}
-            >
+            <div className="mob-nav-link" onClick={() => fn("/search-note")}>
               <div>
                 <RiPencilLine size={20} color="#AFB1B8" />
               </div>
               <div>Notes</div>
             </div>
-            <div
-              className="mob-nav-link"
-              ref={aboutlinkref}
-              onClick={() => fn("/upload-note")}
-            >
+            <div className="mob-nav-link" onClick={() => fn("/upload-note")}>
               <div>
                 <BsFileEarmarkCode size={20} color="#AFB1B8" />
               </div>
               <div>Upload</div>
             </div>
-            <div
-              className="mob-nav-link"
-              ref={projectlinkref}
-              onClick={() => fn("/projects")}
-            >
+            <div className="mob-nav-link" onClick={() => fn("/faq")}>
               <div>
                 <BsPerson size={20} color="#AFB1B8" />
               </div>
-              <div>Profile</div>
+              <div>FAQ's</div>
             </div>
-            <div
-              className="mob-nav-link"
-              ref={resumelinkref}
-              onClick={() => fn("/login")}
-            >
+            <div className="mob-nav-link" onClick={() => fn("/chat-forum")}>
+              <div>
+                <BsPerson size={20} color="#AFB1B8" />
+              </div>
+              <div>Chat</div>
+            </div>
+            <div className="mob-nav-link" onClick={() => fn("/login")}>
               <div>
                 <BiClipboard size={20} color="#AFB1B8" />
               </div>

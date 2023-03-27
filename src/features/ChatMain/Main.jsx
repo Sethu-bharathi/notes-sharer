@@ -35,7 +35,7 @@ export default function ChatMain(props) {
         <Chat 
           darkMode={props.darkMode}
           groupId={groupId} 
-          messages={groupMessages} 
+          messages={groupMessages}
           isGroup={groups.find(group => group.id === groupId) === undefined ? false : true}/>
     </div>
   )

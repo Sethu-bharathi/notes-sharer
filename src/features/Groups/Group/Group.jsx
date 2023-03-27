@@ -36,6 +36,7 @@ export default function Group(props) {
           <Avatar src={props.GImage} />
           <div>
             <p>
+              
               {props.GName.length > 15
                 ? props.GName.slice(0, 15) + "..."
                 : props.GName}

@@ -5,12 +5,13 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import { ThumbDownAltOutlined } from "@mui/icons-material";
+import { useSelector } from "react-redux";
 
 export default function NoteSearch() {
   const [userType, setuserType] = useState("student");
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem("userData"));
-    if (userData.data["teacher"]) {
+    if (userData && userData.data["teacher"]) {
       setuserType("teacher");
     }
     fetch("http://127.0.0.1:5000/get-all-notes")
@@ -38,8 +39,6 @@ export default function NoteSearch() {
     "icon-team-builder.svg",
   ];
 
-  const likeHandler = (userType, userId) => {};
-  const disLikeHandler = (userId) => {};
   return (
     <div className="view-port">
       <div className="header">
@@ -61,8 +60,6 @@ export default function NoteSearch() {
                 hex={hex[colorRandom]}
                 liked={note.upVotes}
                 disliked={note.downVotes}
-                onLike={likeHandler}
-                onDisLike={disLikeHandler}
                 userType={userType}
               />
             );
@@ -76,32 +73,80 @@ export default function NoteSearch() {
 }
 
 const Card = (props) => {
+  console.log("rerender");
+  const data = useSelector((state) => state.auth);
+  const userId = data.userData[props.userType].localId;
+  const userData = { userType: props.userType, id: userId };
   const topics = props.topicsIncluded;
   const [Liked, setLiked] = useState(props.liked);
   const [DisLiked, setDisLiked] = useState(props.disliked);
   const [isLiked, setIsLiked] = useState(
-    Liked.filter((item) => item.id === "0nXlteUZcpbZUbzi4N8cOez1Mls2")
-      .length === 1
+    props.liked.filter((item) => item.id === userId).length > 0
   );
   const [isDisliked, setIsDisliked] = useState(
-    DisLiked.filter((item) => item.id === "0nXlteUZcpbZUbzi4N8cOez1Mls2")
-      .length === 1
+    props.disliked.filter((item) => item.id === userId).length > 0 && !isLiked
   );
-  const userData = { userType: props.userType, id: props.id };
+
+  console.log(props, isLiked, isDisliked);
   const likeData = {
     noteId: props.id,
-    downVotes: DisLiked,
-    upVotes: Liked,
+    downVotes: [...DisLiked],
+    upVotes: [...Liked],
   };
 
   const likeHandler = () => {
-    likeData.upVotes.push(userData);
+    if (isLiked) return alert("Notebook already Liked");
+    setIsLiked(true);
+    likeData.upVotes.push({ ...userData });
+    if (isDisliked) {
+      setIsDisliked(false);
+      setDisLiked((prev) => prev.filter((item) => item.id !== userData.id));
+      likeData.downVotes = likeData.downVotes.filter((item) => {
+        return item.id !== userData.id;
+      });
+    }
+    updateNotes();
+    setLiked(likeData.upVotes);
   };
 
   const disLikeHandler = () => {
-    if (isLiked)
-      setLiked((prev) => prev.filter((item) => item.id !== userData.id));
-    setIsDisliked((prev) => prev.push({ userData }));
+    if (isDisliked) return alert("Notebook already DisLiked");
+    setIsDisliked(true);
+    if (isLiked) {
+      setIsLiked(false);
+      likeData.upVotes = likeData.upVotes.filter((item) => {
+        console.log(item.id !== userId);
+        return item.id !== userData.id;
+      });
+    }
+    likeData.downVotes.push({ ...userData });
+    updateNotes();
+    setLiked(likeData.upVotes);
+    setDisLiked(likeData.downVotes);
+  };
+
+  const updateNotes = () => {
+    console.log(likeData);
+    fetch("http://127.0.0.1:5000/update-votes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(likeData),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw Error(res.statusText);
+        } else {
+          return res.json();
+        }
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((e) => {
+        alert("Something went Wrong");
+      });
   };
   return (
     <>
@@ -132,11 +177,12 @@ const Card = (props) => {
               ) : (
                 <ThumbUpIcon style={{ color: props.hex }} />
               )}
-              
             </button>
-            <p>{Liked.reduce((currentNumber, item) => {
+            <p>
+              {Liked.reduce((currentNumber, item) => {
                 return currentNumber + (item.userType === "student" ? 1 : 5);
-              }, 0)}</p>
+              }, 0)}
+            </p>
             <button className="pointer icon-btn" onClick={disLikeHandler}>
               {!isDisliked ? (
                 <ThumbDownAltOutlined style={{ color: props.hex }} />
@@ -144,9 +190,11 @@ const Card = (props) => {
                 <ThumbDownIcon style={{ color: props.hex }} />
               )}
             </button>
-            <p>{DisLiked.reduce((currentNumber, item) => {
+            <p>
+              {DisLiked.reduce((currentNumber, item) => {
                 return currentNumber + (item.userType === "student" ? 1 : 5);
-              }, 0)}</p>
+              }, 0)}
+            </p>
           </div>
           <img
             src={`https://assets.codepen.io/2301174/${props.image}`}

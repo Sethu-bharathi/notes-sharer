@@ -44,7 +44,12 @@
 }
 
 .messagingDisabled{
-    padding: 0 !important; 
+    padding: 0 !important;
+    aspect-ratio: 1 !important;
+    height:50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     button, div{
        svg{
         color: #A4AAB3;
