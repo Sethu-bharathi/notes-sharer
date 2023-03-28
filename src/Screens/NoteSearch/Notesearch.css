@@ -15,7 +15,25 @@
     --weight2: 400;
     --weight3: 600;
 }
-
+.filters-container{
+    padding-top: 130px;
+    width: 100vw;
+    padding-left: 10%;
+}
+.filters-container input{
+    background-color: var(--grad2);
+    outline: none;
+    border: none;
+    padding: 20px;
+    margin-right: 10px;
+    color: #fff;
+}
+.sort-button{
+    cursor: pointer;
+    color: white;
+    padding:20px;
+    background:var(--grad2)
+}
 .view-port {
     font-size: 15px;
     font-family: 'Poppins', sans-serif;

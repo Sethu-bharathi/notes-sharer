@@ -10,22 +10,28 @@ import { redirect } from "react-router-dom";
 
 export default function Admin() {
   const [userType, setuserType] = useState("student");
+  const [userText, setUserText] = useState("");
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem("userData"));
     if (userData && userData.data["teacher"]) {
       setuserType("teacher");
     }
-    fetch("http://127.0.0.1:5000/get-all-notes")
+    setUserText("Fetching from database");
+    fetch("http://127.0.0.1:5000//get-all-notes-admin")
       .then((res) => res.json())
       .then((data) => {
         setNoteData(data.notes);
+        if (data.notes.length === 0) {
+          setUserText("No notes are below the threshold");
+        }
       })
       .catch((e) => {
         toast(e);
+        setUserText("Notes are not available right now")
       });
   }, []);
 
-  const [noteData, setNoteData] = useState([]);
+  const [noteData, setNoteData] = useState(undefined);
   const colors = ["red", "cyan", "orange", "blue"];
   const hex = [
     "hsl(0, 78%, 62%)",
@@ -46,7 +52,7 @@ export default function Admin() {
         <h1>Search Through all notes</h1>
       </div>
       <div className="row1-container">
-        {noteData.length > 0 ? (
+        {noteData && noteData.length > 0 ? (
           noteData.map((note) => {
             const colorRandom = Math.floor(Math.random() * 4 - 0.1);
             return (
@@ -66,7 +72,7 @@ export default function Admin() {
             );
           })
         ) : (
-          <h3 style={{ textAlign: "center" }}>Notes Not available</h3>
+          <h3 style={{ textAlign: "center" }}>{userText}</h3>
         )}
       </div>
     </div>
