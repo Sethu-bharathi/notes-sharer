@@ -10,8 +10,8 @@ export function checkAuth() {
 }
 export function checkAdmin() {
   const userData = JSON.parse(localStorage.getItem("userData")) ?? undefined;
-    console.log(userData?.data?.isAdmin);
-  if (!userData || userData?.data?.isAdmin) {
+    console.log(userData?.isAdmin);
+  if (!userData || !userData?.isAdmin) {
     alert("You dont't have admin access 🚫 ");
     return redirect("/login");
   }

@@ -17,6 +17,7 @@ export default function NoteSearch() {
     fetch("http://127.0.0.1:5000/get-all-notes")
       .then((res) => res.json())
       .then((data) => {
+        console.log(data.notes);
         setGlobalData(data.notes);
         setNoteData(data.notes);
       })
@@ -43,12 +44,15 @@ export default function NoteSearch() {
   function sortByLike() {
     const sortedProducts = noteData.sort((note1, note2) =>
       note1.upVotes.length < note2.upVotes.length
-        ? -1
-        : note1.upVotes.length > note2.upVotes.length
         ? 1
+        : note1.upVotes.length > note2.upVotes.length
+        ? -1
         : 0
     );
+    console.log("hello");
+    console.log(sortedProducts);
     setNoteData(sortedProducts);
+    console.log(noteData);
   }
   function searchName(searchText) {
     console.log("searched", searchText, globalData);
@@ -56,7 +60,8 @@ export default function NoteSearch() {
       setNoteData(globalData);
     }
     const newState = globalData.filter(
-      (notes) => notes.subjectName.toUpperCase().indexOf(searchText.toUpperCase()) > -1
+      (notes) =>
+        notes.subjectName.toUpperCase().indexOf(searchText.toUpperCase()) > -1
     );
     console.log(newState);
     setNoteData(newState);
@@ -82,13 +87,14 @@ export default function NoteSearch() {
         {noteData.length > 0 ? (
           noteData.map((note) => {
             const colorRandom = Math.floor(Math.random() * 4 - 0.1);
+            console.log(note);
             return (
               <Card
-                key={note.fileId}
+                // key={note.fileId}
                 id={note.fileId}
                 fileLink={note.fileLink}
                 courseName={note.subjectName}
-                topicsIncluded={note.topics}
+                topicsIncluded={note.topicsIncluded}
                 image={images[Math.floor(Math.random() * 4 - 0.1)]}
                 className={colors[colorRandom]}
                 hex={hex[colorRandom]}
@@ -107,6 +113,7 @@ export default function NoteSearch() {
 }
 
 const Card = (props) => {
+  console.log(props.courseName, props);
   const data = useSelector((state) => state.auth);
   const userId = data.userData[props.userType].localId;
   const userData = { userType: props.userType, id: userId };

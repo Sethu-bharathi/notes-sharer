@@ -4,36 +4,36 @@ import "./uploadNote.css";
 export default function UploadNote() {
   const [subjectName, setsubjectName] = useState("");
   const [subjectCode, setsubjectCode] = useState("");
-  const [materialType, setmaterialType] = useState("");
+  const [materialType, setmaterialType] = useState("Note");
   const [topicsIncluded, settopicsIncluded] = useState("");
   const [description, setdescription] = useState("");
   const [selectedFile, setselectedFile] = useState("");
   const [userData, setUserData] = useState({});
-  const getUserData=()=>{
+  const getUserData = () => {
     if (localStorage.getItem("userData")) {
       setUserData(JSON.parse(localStorage.getItem("userData")));
       return true;
     }
-    return false
-  }
+    return false;
+  };
   useEffect(() => {
-    getUserData()
+    getUserData();
   }, []);
   function uploadNote(event) {
-    let key
+    let key;
     if (!userData) {
-      if(!getUserData())return alert("Login to upload Notes");
+      if (!getUserData()) return alert("Login to upload Notes");
     }
     event.preventDefault();
-    key=Object.keys(userData.data)[0]
+    key = Object.keys(userData.data)[0];
     const formData = new FormData();
-  
+
     const bodyJson = {
       subjectCode,
       subjectName,
       materialType,
       description,
-      topicsIncluded:topicsIncluded.split(","),
+      topicsIncluded: topicsIncluded.split(","),
       uId: userData.data[key].localId,
       userType: key,
     };
@@ -74,8 +74,10 @@ export default function UploadNote() {
               placeholder="Subject Name"
             />
             <select
-              value={materialType}
-              onChange={(e) => setmaterialType(e.target.value)}
+              onChange={(e) => {
+                console.log(e.target.value);
+                setmaterialType(e.target.value);
+              }}
             >
               <option>Note</option>
               <option>Question papers</option>

@@ -61,7 +61,7 @@ export default function Admin() {
                 id={note.fileId}
                 fileLink={note.fileLink}
                 courseName={note.subjectName}
-                topicsIncluded={note.topics}
+                topicsIncluded={note.topicsIncluded}
                 image={images[Math.floor(Math.random() * 4 - 0.1)]}
                 className={colors[colorRandom]}
                 hex={hex[colorRandom]}
