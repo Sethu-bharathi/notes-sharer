@@ -1,15 +1,14 @@
 import Header from "@editorjs/header";
 import List from "@editorjs/link";
 import Embed from "@editorjs/embed";
-import Table from '@editorjs/table';
+import Table from "@editorjs/table";
 import Quote from "@editorjs/quote";
 import Marker from "@editorjs/marker";
 import Checklist from "@editorjs/checklist";
-import InlineCode from '@editorjs/inline-code';
+import InlineCode from "@editorjs/inline-code";
 import CodeTool from "@calumk/editorjs-codeflask";
-import ImageTool from '@editorjs/image';
-const Configuration = () => {
-  console.log(Header);
+import ImageTool from "@editorjs/image";
+const Configuration = (noteData) => {
   return {
     /**
      * Id of Element that should contain Editor instance
@@ -89,7 +88,7 @@ const Configuration = () => {
           },
         },
       },
-    //   warning: Warning,
+      //   warning: Warning,
 
       marker: {
         class: Marker,
@@ -106,7 +105,7 @@ const Configuration = () => {
         shortcut: "CMD+SHIFT+I",
       },
 
-    //   linkTool: LinkTool,
+      //   linkTool: LinkTool,
 
       table: {
         class: Table,
@@ -123,20 +122,7 @@ const Configuration = () => {
     onChange: (api, event) => {
       console.log("Now I know that Editor's content changed!", event);
     },
-    data: {
-      "time": 1676021988860,
-      "blocks": [
-          {
-              "id": "VYjeIi9njD",
-              "type": "header",
-              "data": {
-                  "text": "Heading Goes here",
-                  "level": 2
-              }
-          }
-      ],
-      "version": "2.26.5"
-  }
+    data: noteData,
   };
 };
 

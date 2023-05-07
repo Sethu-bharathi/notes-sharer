@@ -13,11 +13,11 @@ export default function NoteSearch() {
     const userData = JSON.parse(localStorage.getItem("userData"));
     if (userData && userData.data["teacher"]) {
       setuserType("teacher");
+      console.log("Teacher");
     }
     fetch("http://127.0.0.1:5000/get-all-notes")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.notes);
         setGlobalData(data.notes);
         setNoteData(data.notes);
       })
@@ -42,20 +42,15 @@ export default function NoteSearch() {
     "icon-team-builder.svg",
   ];
   function sortByLike() {
-    const sortedProducts = noteData.sort((note1, note2) =>
-      note1.upVotes.length < note2.upVotes.length
-        ? 1
-        : note1.upVotes.length > note2.upVotes.length
-        ? -1
-        : 0
-    );
-    console.log("hello");
-    console.log(sortedProducts);
+    console.log("clicked");
+    const sortedProducts = [...noteData].sort((note1, note2) => {
+      if (note1.upVotes.length < note2.upVotes.length) return 1;
+      if (note1.upVotes.length > note2.upVotes.length) return -1;
+      return 0;
+    });
     setNoteData(sortedProducts);
-    console.log(noteData);
   }
   function searchName(searchText) {
-    console.log("searched", searchText, globalData);
     if (searchText.trim().length === 0) {
       setNoteData(globalData);
     }
@@ -63,7 +58,6 @@ export default function NoteSearch() {
       (notes) =>
         notes.subjectName.toUpperCase().indexOf(searchText.toUpperCase()) > -1
     );
-    console.log(newState);
     setNoteData(newState);
   }
   return (
@@ -86,16 +80,16 @@ export default function NoteSearch() {
       <div className="row1-container">
         {noteData.length > 0 ? (
           noteData.map((note) => {
-            const colorRandom = Math.floor(Math.random() * 4 - 0.1);
-            console.log(note);
+            const colorRandom = Math.floor(Math.random() * 4);
+            console.log(colorRandom, colors[colorRandom]);
             return (
               <Card
-                // key={note.fileId}
+                key={note.fileId}
                 id={note.fileId}
                 fileLink={note.fileLink}
                 courseName={note.subjectName}
                 topicsIncluded={note.topicsIncluded}
-                image={images[Math.floor(Math.random() * 4 - 0.1)]}
+                image={images[Math.floor(Math.random() * 4)]}
                 className={colors[colorRandom]}
                 hex={hex[colorRandom]}
                 liked={note.upVotes}
@@ -113,9 +107,10 @@ export default function NoteSearch() {
 }
 
 const Card = (props) => {
-  console.log(props.courseName, props);
   const data = useSelector((state) => state.auth);
+  console.log(data);
   const userId = data.userData[props.userType].localId;
+
   const userData = { userType: props.userType, id: userId };
   const topics = props.topicsIncluded;
   const [Liked, setLiked] = useState(props.liked);

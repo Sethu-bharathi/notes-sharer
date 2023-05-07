@@ -15,20 +15,20 @@ html {
   overflow: scroll;
   align-content: flex-start;
 }
-.ce-header{
+.ce-header {
   color: white;
 }
 
 .editor-div {
-  
   padding: 1rem;
-  padding-top: 2rem;    
+  padding-top: 2rem;
   width: 90%;
   min-height: 80vh;
   border-radius: 5px;
   background-color: #353b65;
 }
-.btn ,.btn-submit{
+.btn,
+.btn-submit {
   height: 50px;
   width: 150px;
   position: fixed;
@@ -41,8 +41,8 @@ html {
   cursor: pointer;
   color: white;
 }
-.btn-submit{
-    position: absolute;
+.btn-submit {
+  position: absolute;
 }
 .heading {
   display: inline-block;
@@ -59,23 +59,23 @@ html {
 /* .ce-header{
     background-color: aqua !important;
 } */
-.confirm{
-    height: 100vh;
-    width: 100vw;
-    position: absolute;
-    top:0;
-    right:0;
-    background-color: rgba(0, 0, 0, 0.4);
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    display: none;
-    z-index: -100;
+.confirm {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  display: none;
+  z-index: -100;
 }
-.prompt >span {
-  top:15px;
+.prompt > span {
+  top: 15px;
   transform: rotate(45deg);
   left: 30px;
   position: absolute;
@@ -84,89 +84,106 @@ html {
   cursor: pointer;
   z-index: 1000;
 }
-.prompt{
-    min-height: min(400px,30%);
-    min-width: min(90%,600px);
-    box-shadow: 0px 0px 30px .2px #646363;
-    background-color: white;
-    animation: popin .7s ease-out;
-    transition: all;
-    position: relative;
+.prompt {
+  min-height: min(400px, 30%);
+  min-width: min(90%, 600px);
+  box-shadow: 0px 0px 30px 0.2px #646363;
+  background-color: white;
+  animation: popin 0.7s ease-out;
+  transition: all;
+  position: relative;
 }
-@keyframes popin{
-    0%{
-        transform: translate(0,50px);
-        opacity: .4;
-    }
-    50%{
-        transform: translate(0,-40px);
-        opacity: .7;
-    }
-    100%{
-        transform: translate(0,0);
-        opacity: 1;
-    }
+@keyframes popin {
+  0% {
+    transform: translate(0, 50px);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate(0, -40px);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
 }
-.prompt > form{
-    padding-block: 30px 70px;
-    gap:30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+.prompt > form {
+  padding-block: 30px 70px;
+  gap: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
-form >h3{
-    margin:5px;
-    color: black;
+form > h3 {
+  margin: 5px;
+  color: black;
 }
-.plus,.minus{
-    height: 30px;
-    width: 30px;
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: black;
-    cursor:pointer;
-    border-radius: 1.5rem;
-    text-align: center;
-    background-color: rgb(0,122,255);
+.plus,
+.minus {
+  height: 30px;
+  width: 30px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: black;
+  cursor: pointer;
+  border-radius: 1.5rem;
+  text-align: center;
+  background-color: rgb(0, 122, 255);
 }
-.minus{
-    background-color: rgb(255,59,48);
-    transform: rotate(45deg);
+.minus {
+  background-color: rgb(255, 59, 48);
+  transform: rotate(45deg);
 }
-.email-holder{
-    display: flex;
-    gap:20px;
-    justify-content: center;
-    align-items: center;
+.email-holder {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
 }
-.prompt form:hover{
+.prompt form:hover {
   margin: 0;
 }
-.email-holder > input,.prompt>form>input {
-    width: 300px;
-    border: none;
-    color: black !important;
-    background-color: transparent !important;
-    border-bottom: black solid 2px;
-    border-radius: 0;
-    color: black;
-    height: 30px;
-    font-size: 18px;
-  }
-  .email-holder > input:focus,.prompt>form>input:focus {
-    outline: none;
-  }
-  
+.email-holder > input,
+.prompt > form > input {
+  width: 300px;
+  border: none;
+  color: black !important;
+  background-color: transparent !important;
+  border-bottom: black solid 2px;
+  border-radius: 0;
+  color: black;
+  height: 30px;
+  font-size: 18px;
+}
+.email-holder > input:focus,
+.prompt > form > input:focus {
+  outline: none;
+}
+
+.ce-inline-toolbar {
+  background-color: #999;
+  color: #000;
+}
+
+.private-notes {
+  height: 100px;
+  width: 200px;
+  background-color: var(--grad2);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 @media screen and (max-width: 969px) {
   .white {
-    padding-inline  : 3%;
+    padding-inline: 3%;
   }
-  .editor-div{
+  .editor-div {
     width: auto;
   }
-  html{
+  html {
     font-size: 14px;
   }
 }
